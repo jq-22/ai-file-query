@@ -1,0 +1,362 @@
+AI File Query System
+│
+├── File Input & Management
+│   ├── Upload System
+│   │   ├── Multi-file upload support
+│   │   ├── Drag-and-drop interface
+│   │   ├── Progress indicators
+│   │   ├── Chunked upload for large files
+│   │   ├── Resume failed uploads
+│   │   └── File size limits enforcement
+│   │
+│   ├── Handle Image, Text and Other File Types
+│   │   ├── Image files (PNG, JPG, JPEG, GIF, WEBP)
+│   │   │   ├── OCR extraction (Tesseract/EasyOCR)
+│   │   │   ├── Image metadata extraction (EXIF)
+│   │   │   └── Thumbnail generation
+│   │   ├── Text files (TXT, MD, RTF)
+│   │   │   ├── Encoding detection
+│   │   │   └── Raw text extraction
+│   │   ├── Documents (PDF, DOCX, DOC)
+│   │   │   ├── PDF text extraction (PyPDF2/pdfplumber)
+│   │   │   ├── DOCX parsing (python-docx)
+│   │   │   └── Layout preservation
+│   │   ├── Spreadsheets (XLSX, XLS, CSV)
+│   │   │   ├── Sheet parsing (openpyxl/pandas)
+│   │   │   ├── Multiple sheet handling
+│   │   │   ├── Formula extraction
+│   │   │   └── Data type inference
+│   │   ├── Databases (SQLite, SQL dumps)
+│   │   │   ├── Schema extraction
+│   │   │   ├── Table relationships mapping
+│   │   │   ├── Sample data extraction
+│   │   │   └── Query generation support
+│   │   └── Code files (PY, JS, JSON, XML, HTML)
+│   │       ├── Syntax preservation
+│   │       └── Structure analysis
+│   │
+│   ├── File Validation
+│   │   ├── MIME type verification
+│   │   ├── File extension checking
+│   │   ├── Malware scanning (ClamAV integration)
+│   │   ├── Content integrity verification
+│   │   ├── Corrupted file detection
+│   │   └── Blacklist/whitelist enforcement
+│   │
+│   ├── Text Extraction
+│   │   ├── Format-specific extractors
+│   │   ├── Language detection
+│   │   ├── Character encoding normalization
+│   │   ├── Structure preservation (headers, tables)
+│   │   ├── Error handling for corrupted content
+│   │   └── Fallback extraction methods
+│   │
+│   └── Metadata Handling
+│       ├── File properties (size, type, date)
+│       ├── User attribution (uploader, permissions)
+│       ├── Processing status tracking
+│       ├── Version control
+│       ├── Tags and categories
+│       └── Custom metadata fields
+│
+├── Data Processing & Storage
+│   ├── Text Cleaning
+│   │   ├── Remove special characters
+│   │   ├── Normalize whitespace
+│   │   ├── Fix encoding issues
+│   │   ├── Remove duplicate content
+│   │   ├── Stopword handling (optional)
+│   │   └── Language-specific processing
+│   │
+│   ├── Embedding Generation
+│   │   ├── Model selection (OpenAI, Sentence-Transformers, etc.)
+│   │   ├── Text chunking strategy
+│   │   │   ├── Fixed-size chunks
+│   │   │   ├── Semantic chunking
+│   │   │   ├── Overlap configuration
+│   │   │   └── Chunk size optimization
+│   │   ├── Batch processing
+│   │   ├── Embedding caching
+│   │   ├── Dimension reduction (optional)
+│   │   └── Error handling and retries
+│   │
+│   ├── Vector Database
+│   │   ├── Database selection (Chroma, Pinecone, FAISS, Qdrant)
+│   │   ├── Index creation and management
+│   │   ├── Similarity search configuration
+│   │   ├── Metadata filtering support
+│   │   ├── Namespace/collection management
+│   │   ├── Backup and recovery
+│   │   └── Performance optimization
+│   │
+│   └── Reindexing
+│       ├── Trigger conditions (file update, model change)
+│       ├── Incremental vs full reindex
+│       ├── Background task queue
+│       ├── Progress tracking
+│       ├── Rollback on failure
+│       └── Index versioning
+│
+├── AI Query System
+│   ├── Query Retrieval
+│   │   ├── Query preprocessing
+│   │   │   ├── Spelling correction
+│   │   │   ├── Query expansion
+│   │   │   └── Intent classification
+│   │   ├── Query embedding generation
+│   │   ├── Similarity search execution
+│   │   ├── Result ranking and scoring
+│   │   ├── Relevance threshold filtering
+│   │   ├── Hybrid search (keyword + semantic)
+│   │   └── Result deduplication
+│   │
+│   ├── Context Prompt Builder
+│   │   ├── Retrieved chunks assembly
+│   │   ├── Token limit management
+│   │   ├── Context prioritization
+│   │   ├── Source attribution formatting
+│   │   ├── System prompt construction
+│   │   ├── Few-shot examples (optional)
+│   │   └── Metadata injection
+│   │
+│   ├── Model Response
+│   │   ├── API integration (OpenAI, Anthropic, local models)
+│   │   ├── Request formatting
+│   │   ├── Temperature and parameter tuning
+│   │   ├── Streaming response handling
+│   │   ├── Rate limiting and quotas
+│   │   ├── Error handling and fallbacks
+│   │   ├── Response validation
+│   │   └── Cost tracking
+│   │
+│   └── Output Formatter
+│       ├── Markdown rendering
+│       ├── Code syntax highlighting
+│       ├── Citation links to sources
+│       ├── Confidence indicators
+│       ├── Response sanitization
+│       └── Export options (PDF, TXT, JSON)
+│
+├── User Interface
+│   ├── Query Input
+│   │   ├── Text input field with auto-resize
+│   │   ├── Voice input (optional)
+│   │   ├── Query history dropdown
+│   │   ├── Suggested queries
+│   │   ├── Advanced search filters
+│   │   ├── File-specific targeting
+│   │   └── Clear/reset button
+│   │
+│   ├── File List
+│   │   ├── Sortable table view
+│   │   ├── Grid/list view toggle
+│   │   ├── Search and filter files
+│   │   ├── File preview modal
+│   │   ├── Batch selection
+│   │   ├── Delete/archive actions
+│   │   ├── Download original files
+│   │   ├── File status indicators (processing, indexed, error)
+│   │   └── Pagination or infinite scroll
+│   │
+│   ├── Public and Private Uploads
+│   │   ├── Privacy toggle per file
+│   │   ├── Shared link generation
+│   │   ├── Access permissions management
+│   │   │   ├── View-only links
+│   │   │   ├── Time-limited access
+│   │   │   └── Password protection
+│   │   ├── Public gallery view
+│   │   ├── Organization/team spaces
+│   │   └── Visibility indicators
+│   │
+│   ├── Automated Email System
+│   │   ├── Email service integration (SMTP, SendGrid, SES)
+│   │   ├── Email templates
+│   │   │   ├── Welcome emails
+│   │   │   ├── File processing notifications
+│   │   │   ├── Sharing notifications
+│   │   │   ├── Query result summaries
+│   │   │   └── Admin alerts
+│   │   ├── Email queue management
+│   │   ├── Scheduling and triggers
+│   │   ├── Unsubscribe handling
+│   │   ├── Delivery tracking
+│   │   └── Email preferences per user
+│   │
+│   ├── Response View
+│   │   ├── Formatted answer display
+│   │   ├── Source citations with links
+│   │   ├── Copy to clipboard
+│   │   ├── Regenerate response option
+│   │   ├── Feedback buttons (thumbs up/down)
+│   │   ├── Follow-up question suggestions
+│   │   ├── Conversation threading
+│   │   └── Export conversation
+│   │
+│   └── File Summary
+│       ├── Auto-generated file overview
+│       ├── Key topics extraction
+│       ├── Word/character count
+│       ├── Entity recognition (names, dates, locations)
+│       ├── Visual content analysis (for images)
+│       └── Manual summary editing
+│
+└── Deployment & Management
+    ├── Flask Backend
+    │   ├── Application structure
+    │   │   ├── Blueprints organization
+    │   │   ├── API versioning
+    │   │   ├── Middleware configuration
+    │   │   └── Error handlers
+    │   ├── Database setup
+    │   │   ├── SQLAlchemy/PostgreSQL configuration
+    │   │   ├── Migration management (Alembic)
+    │   │   ├── Connection pooling
+    │   │   └── Backup strategy
+    │   ├── Background tasks
+    │   │   ├── Celery/RQ configuration
+    │   │   ├── Redis/RabbitMQ setup
+    │   │   ├── Task scheduling
+    │   │   └── Task monitoring
+    │   ├── API endpoints
+    │   │   ├── RESTful design
+    │   │   ├── Request validation
+    │   │   ├── Response formatting
+    │   │   └── API documentation (Swagger/OpenAPI)
+    │   └── Security measures
+    │       ├── CORS configuration
+    │       ├── Rate limiting (Flask-Limiter)
+    │       ├── Input sanitization
+    │       └── SQL injection prevention
+    │
+    ├── LAN Hosting
+    │   ├── Network configuration
+    │   │   ├── Static IP assignment
+    │   │   ├── Port forwarding setup
+    │   │   └── Firewall rules
+    │   ├── WSGI server setup (Gunicorn/uWSGI)
+    │   ├── Reverse proxy (Nginx/Apache)
+    │   │   ├── SSL/TLS certificates
+    │   │   ├── Load balancing
+    │   │   └── Static file serving
+    │   ├── Domain/subdomain setup
+    │   ├── Performance tuning
+    │   │   ├── Worker processes
+    │   │   ├── Timeout configuration
+    │   │   └── Resource limits
+    │   └── Monitoring
+    │       ├── Uptime monitoring
+    │       ├── Resource usage tracking
+    │       └── Health check endpoints
+    │
+    ├── User System (Login, Sign Up, Admin Control)
+    │   ├── Authentication
+    │   │   ├── Registration flow
+    │   │   │   ├── Email verification
+    │   │   │   ├── Password strength requirements
+    │   │   │   └── CAPTCHA integration
+    │   │   ├── Login system
+    │   │   │   ├── JWT/session-based auth
+    │   │   │   ├── Remember me functionality
+    │   │   │   └── Multi-factor authentication (optional)
+    │   │   ├── Password reset flow
+    │   │   ├── OAuth integration (Google, GitHub, etc.)
+    │   │   └── Session management
+    │   │
+    │   ├── Authorization
+    │   │   ├── Role-based access control (RBAC)
+    │   │   │   ├── User roles (admin, power user, regular)
+    │   │   │   ├── Permission definitions
+    │   │   │   └── Role assignment
+    │   │   ├── Resource-level permissions
+    │   │   └── API endpoint protection
+    │   │
+    │   ├── User Profile
+    │   │   ├── Profile editing
+    │   │   ├── Avatar upload
+    │   │   ├── Preferences management
+    │   │   ├── Usage statistics
+    │   │   └── Account deletion
+    │   │
+    │   └── Admin Control Panel
+    │       ├── User management dashboard
+    │       │   ├── View all users
+    │       │   ├── Activate/deactivate accounts
+    │       │   ├── Assign/modify roles
+    │       │   └── Reset passwords
+    │       ├── System statistics
+    │       │   ├── User activity metrics
+    │       │   ├── File upload statistics
+    │       │   ├── Query volume tracking
+    │       │   └── Storage usage monitoring
+    │       ├── Content moderation
+    │       │   ├── Review flagged files
+    │       │   ├── Remove inappropriate content
+    │       │   └── User reports handling
+    │       ├── System configuration
+    │       │   ├── Feature toggles
+    │       │   ├── Rate limit adjustment
+    │       │   └── Maintenance mode
+    │       └── Audit logs viewer
+    │
+    ├── Logging
+    │   ├── Logging configuration
+    │   │   ├── Log levels (DEBUG, INFO, WARNING, ERROR)
+    │   │   ├── Log format standardization
+    │   │   ├── Structured logging (JSON format)
+    │   │   └── Log rotation policies
+    │   ├── Application logs
+    │   │   ├── Request/response logging
+    │   │   ├── Error tracking with stack traces
+    │   │   ├── Performance metrics
+    │   │   └── User action logging
+    │   ├── Security logs
+    │   │   ├── Authentication attempts
+    │   │   ├── Authorization failures
+    │   │   ├── Suspicious activity detection
+    │   │   └── Data access logs
+    │   ├── System logs
+    │   │   ├── Server health metrics
+    │   │   ├── Database performance
+    │   │   ├── Background job status
+    │   │   └── Resource utilization
+    │   ├── Log aggregation
+    │   │   ├── Centralized logging (ELK Stack, Grafana Loki)
+    │   │   ├── Log parsing and indexing
+    │   │   └── Search functionality
+    │   └── Alerting
+    │       ├── Error rate thresholds
+    │       ├── Performance degradation alerts
+    │       ├── Security incident notifications
+    │       └── Alert channels (email, Slack, SMS)
+    │
+    └── Environment Setup
+        ├── Development environment
+        │   ├── Local database setup
+        │   ├── Mock services
+        │   ├── Hot reload configuration
+        │   └── Debug tools
+        ├── Testing environment
+        │   ├── Test database
+        │   ├── Automated testing
+        │   │   ├── Unit tests (pytest)
+        │   │   ├── Integration tests
+        │   │   ├── API tests
+        │   │   └── End-to-end tests
+        │   ├── Test data generation
+        │   └── CI/CD pipeline
+        ├── Production environment
+        │   ├── Environment variables management
+        │   ├── Secrets management (Vault, environment files)
+        │   ├── Database migrations
+        │   └── Deployment scripts
+        ├── Dependencies management
+        │   ├── requirements.txt/Pipfile
+        │   ├── Virtual environment setup
+        │   ├── Version pinning
+        │   └── Dependency security scanning
+        └── Configuration management
+            ├── Config files per environment
+            ├── Feature flags
+            ├── API keys management
+            └── Third-party service configs
